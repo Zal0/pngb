@@ -724,14 +724,14 @@ void gbdk_c_code_output(PICDATA *gbpic, FILE *f){
 	fprintf(f, "\n#include \"MapInfo.h\"\n");
 	fprintf(f, "const struct MapInfoInternal %s_internal = {\n", globalOpts.name);
 	fprintf(f, "\t%s_map, //map\n", globalOpts.name);
+	fprintf(f, "\t%d, //width\n", gbpic->cols);
+	fprintf(f, "\t%d, //height\n", gbpic->rows);
 	fprintf(f, "\t%s, //attributes\n", "0"); //TODO
 	fprintf(f, "\t&%s_tiles, //tiles info\n", globalOpts.name);
 	fprintf(f, "};");
 
 	fprintf(f, "\nstruct MapInfo %s = {\n", globalOpts.name);
 	fprintf(f, "\t%d, //bank\n", globalOpts.bank);
-	fprintf(f, "\t%d, //width\n", gbpic->cols);
-	fprintf(f, "\t%d, //height\n", gbpic->rows);
 	fprintf(f, "\t&%s_internal, //data\n", globalOpts.name);
 	fprintf(f, "};\n");
 	
